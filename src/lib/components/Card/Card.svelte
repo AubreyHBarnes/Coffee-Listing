@@ -13,10 +13,15 @@
         <p class="text-white font-medium">{coffeeName}</p>
         <span class="text-black bg-[#FEF7EE] rounded-md px-2 py-1 font-medium text-sm h-min">{coffeePrice}</span>
     </div>
-    <div class="cardRatingWrapper">
-        <img alt="" src="" />
+    <div class="cardRatingWrapper flex">
         {#if coffeeVotes}
-            <p>ratings</p>
+            <img alt="" src="/img/Star_fill.svg" />
+            <p class="font-medium">{coffeeRating} <span class="text-[#4d5562]">({coffeeVotes} votes)</span></p>
+        {:else if !coffeeVotes}
+            <img alt="" src="/img/Star.svg" />
+            <p class="text-[#4d5562] font-medium">No Ratings</p>
+        {:else}
+            <p>No Data</p>
         {/if}
     </div>
 </div>
