@@ -5,6 +5,12 @@
     
     let {data} = $props();
 
+    let fullCatalog = Array.from(data.item);
+    let filteredCatalog = fullCatalog.filter(coffee => coffee.id !== 5);
+
+    console.log(fullCatalog)
+    console.log(filteredCatalog)
+
     let radioValue = $state("");
 
     const options = [{
@@ -29,9 +35,25 @@
     <p>{radioValue} is selected</p>
 
     <div class="CardGrid w-full max-md:mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {#each data.item
+        {#if radioValue === "" || radioValue === 'all-products'}
+            {#each fullCatalog
+                as { id, name, image, popular, price, rating, votes }}
+            
+                <Card
+                    coffeeId={id}
+                    coffeeName={name}
+                    coffeeImg={image}
+                    coffeePopular={popular}
+                    coffeePrice={price}
+                    coffeeRating={rating}
+                    coffeeVotes={votes}
+                    
+                />  
+            {/each}
+        {:else}
+        {#each filteredCatalog
             as { id, name, image, popular, price, rating, votes }}
-           
+        
             <Card
                 coffeeId={id}
                 coffeeName={name}
@@ -41,10 +63,9 @@
                 coffeeRating={rating}
                 coffeeVotes={votes}
                 
-            />
-           
-            
-        {/each}
+            />  
+        {/each}    
+        {/if}
     </div>
 </div>
 
