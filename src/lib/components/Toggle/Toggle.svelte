@@ -1,15 +1,19 @@
-<!-- <script>
-    import { browser } from '$app/environment';
+<script>
+    let { options, userChoice = $bindable(options[0].value) } = $props();
+    // let userChoice = $state(options[0].value);
 
-    // if (browser) {
-    //     const headingElement = document.querySelector('h1');
-    //     console.log(headingElement);
-    // }
-</script> -->
+    const slugify = (str = "") => str.toLowerCase().replace(/ /g, "-").replace(/\./g, "");
+</script>
 
-<!-- I have 2 buttons that display products based on availability.  -->
-<!-- [All] [In Stock] -->
-<!-- Default is All, If In Stock is selected -->
+<div role="radiogroup" class="productFilterWrapper mx-auto max-w-96 flex justify-center gap-6 pb-8" >
 
+    {#each options as { value, label }}
+    
+        <input bind:group={userChoice} value={value} type="radio" id={slugify(label)} class="hidden-toggles__input hidden" >
+        <label for={slugify(label)} class="hidden-toggles__label has-checked:bg-green-100 has-checked:bg-green-100 has-checked:border-green-700">{label}</label>
+    
+        <!-- <input bind:group={userChoice} value={value} name="available-now" type="radio" id="available-now" class="hidden-toggles__input hidden" >
+        <label for="available-now" class="hidden-toggles__label has-[:checked]:bg-green-100 has-[:checked]:bg-green-100 has-[:checked]:border-green-700">Available Now</label>	 -->
+     {/each}
 
-<!-- <p>oh hi</p> -->
+</div>
