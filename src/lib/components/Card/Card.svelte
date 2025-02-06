@@ -1,10 +1,10 @@
 <script>
-    let {coffeeId, coffeeName, coffeeImg,  coffeePopular, coffeePrice, coffeeRating, coffeeVotes, coffeeFilter} = $props();
-    
+    let {coffeeId, coffeeName, coffeeImg,  coffeePopular, coffeePrice, coffeeRating, coffeeVotes } = $props();
+
 </script>
-{#if coffeeFilter}
-    <p>we did it</p>
-{/if}
+<!-- {#if coffeeFilter === '' && coffeeId === 5}
+    
+{/if} -->
 <div class="cardWrapper">
     <div class="cardImgWrapper">
         {#if coffeePopular === true}
