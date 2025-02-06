@@ -3,10 +3,10 @@
     import Card from '$lib/components/Card/Card.svelte';
     import Toggle from '$lib/components/Toggle/Toggle.svelte';
     
-    let {data} = $props();
+    let {data} = $props(); //data is coming from +page.server.js
 
-    let fullCatalog = Array.from(data.item);
-    let filteredCatalog = fullCatalog.filter(coffee => coffee.id !== 5);
+    let fullCatalog = Array.from(data.item); //Array.from since we are receiving an object full of objects.
+    let filteredCatalog = fullCatalog.filter(coffee => coffee.id !== 5); 
 
     let radioValue = $state("");
 
