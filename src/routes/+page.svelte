@@ -8,9 +8,6 @@
     let fullCatalog = Array.from(data.item);
     let filteredCatalog = fullCatalog.filter(coffee => coffee.id !== 5);
 
-    console.log(fullCatalog)
-    console.log(filteredCatalog)
-
     let radioValue = $state("");
 
     const options = [{
@@ -31,8 +28,6 @@
     </div>
     
     <Toggle {options} bind:userChoice={radioValue}/>
-
-    <p>{radioValue} is selected</p>
 
     <div class="CardGrid w-full max-md:mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {#if radioValue === "" || radioValue === 'all-products'}
