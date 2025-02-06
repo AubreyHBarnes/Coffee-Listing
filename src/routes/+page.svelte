@@ -8,7 +8,7 @@
     let fullCatalog = Array.from(data.item); //Array.from since we are receiving an object full of objects.
     let filteredCatalog = fullCatalog.filter(coffee => coffee.id !== 5); 
 
-    let radioValue = $state("");
+    
 
     const options = [{
 		value: 'all-products',
@@ -17,8 +17,16 @@
 		value: 'available-now',
 		label: 'Available Now',
 	}, ]
+
+    let radioValue = $state(options[0].value); //default radio choice
   
 </script>
+
+<svelte:head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+</svelte:head>
 <img alt="" src="/img/bg-cafe-lg.jpg" />
 <div class="floatingContainer px-4 py-8 md:px-[4rem] lg:px-[6rem] md:mx-[6rem] mb-[3rem] bg-[#111315] relative bottom-3 md:bottom-[9rem] rounded-2xl text-white">
     <div class="headingCopyContainer m-auto max-w-[56ch] text-center py-8 bg-[url(/img/vector.svg)] bg-no-repeat bg-contain bg-right">
@@ -46,20 +54,20 @@
                 />  
             {/each}
         {:else}
-        {#each filteredCatalog
-            as { id, name, image, popular, price, rating, votes }}
-        
-            <Card
-                coffeeId={id}
-                coffeeName={name}
-                coffeeImg={image}
-                coffeePopular={popular}
-                coffeePrice={price}
-                coffeeRating={rating}
-                coffeeVotes={votes}
-                
-            />  
-        {/each}    
+            {#each filteredCatalog
+                as { id, name, image, popular, price, rating, votes }}
+            
+                <Card
+                    coffeeId={id}
+                    coffeeName={name}
+                    coffeeImg={image}
+                    coffeePopular={popular}
+                    coffeePrice={price}
+                    coffeeRating={rating}
+                    coffeeVotes={votes}
+                    
+                />  
+            {/each}    
         {/if}
     </div>
 </div>
